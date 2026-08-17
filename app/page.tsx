@@ -1,65 +1,144 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Logo } from "@/components/Logo";
+import { AnimatedFlowIcon } from "@/components/AnimatedFlowIcon";
+import { Container, Section } from "@/components/Layout";
+import { CaseStudy } from "@/components/CaseStudy";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Clients } from "@/components/Clients";
+import { PackageOpen, GitMerge, Truck } from "lucide-react";
+
+const heroVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const featureVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <Header />
+      <main className="overflow-hidden">
+        {/* HERO SECTION */}
+      <section className="relative min-h-[85vh] flex items-center justify-center pt-20 pb-16 overflow-hidden">
+        {/* Decorative Background Icon */}
+        <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-[0.05]">
+          <AnimatedFlowIcon className="w-full max-w-4xl text-accent" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        <Container className="relative z-10 flex flex-col items-center text-center">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col items-center max-w-3xl mx-auto"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+            <motion.div variants={heroVariants} className="mb-8">
+              <Logo width={260} height={61} />
+            </motion.div>
+
+            <motion.h1
+              variants={heroVariants}
+              className="text-4xl md:text-6xl font-extrabold tracking-tight text-ink mb-6"
+            >
+              Üretimi ve Stokları <br />
+              <span className="text-accent">Tek Ekrandan</span> Yönetin
+            </motion.h1>
+
+            <motion.p
+              variants={heroVariants}
+              className="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl leading-relaxed"
+            >
+              Karmaşık Excel dosyalarından kurtulun. Hammadde girişinden çok seviyeli üretime ve ürün sevkiyatına kadar tüm endüstriyel süreçlerinizi dijitalleştirin.
+            </motion.p>
+
+            <motion.div variants={heroVariants} className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <Link
+                href="/teklif-al"
+                className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white bg-accent hover:bg-[#0a7a75] transition-colors rounded-full shadow-sm"
+              >
+                Teklif Al
+              </Link>
+              <a
+                href="#vaka-analizi"
+                className="inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-ink bg-transparent border-2 border-ink/10 hover:border-ink/20 transition-colors rounded-full"
+              >
+                Vaka Analizini İncele
+              </a>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
+      {/* CLIENTS SECTION */}
+      <Clients />
+
+      {/* FEATURES SECTION */}
+      <Section className="bg-white border-b border-slate-100">
+        <Container>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-ink">Neler Yapıyoruz?</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              {
+                icon: PackageOpen,
+                title: "Hammadde Takibi",
+                desc: "Depoya giren her hammaddeyi, fireleri ve kullanım oranlarını anlık olarak izleyin. Eksik malzeme nedeniyle üretim durmasın.",
+              },
+              {
+                icon: GitMerge,
+                title: "Çok Seviyeli Üretim",
+                desc: "Alt ürünlerden nihai ürüne kadar karmaşık reçeteleri yönetin. Üretim bandından çıkan her ürün stoklara otomatik işlensin.",
+              },
+              {
+                icon: Truck,
+                title: "Sevkiyat Yönetimi",
+                desc: "Müşteriye çıkan siparişleri irsaliye mantığıyla kaydedin, stoktan otomatik düşün. Geriye dönük tüm hareketleri tek tıkla raporlayın.",
+              }
+            ].map((feature, idx) => (
+              <motion.div
+                key={idx}
+                variants={featureVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                className="flex flex-col items-center text-center p-6"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center text-accent mb-6">
+                  <feature.icon className="w-8 h-8" />
+                </div>
+                <h3 className="text-xl font-semibold text-ink mb-3">{feature.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{feature.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* CASE STUDY SECTION */}
+      <CaseStudy />
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
