@@ -29,10 +29,7 @@ export default function LoginPage() {
       if (res?.error) {
         setError("Geçersiz kullanıcı adı veya şifre.");
       } else {
-        const sessionRes = await fetch("/api/auth/session");
-        const sessionData = await sessionRes.json();
-        
-        if (sessionData?.user?.role === "ALD_ADMIN") {
+        if (username !== "ogzsystem") {
           window.location.href = "https://ald.ogzsystem.com/is-takibi";
         } else {
           router.push("/admin/teklifler");
