@@ -92,7 +92,7 @@ export default function LoginPage() {
         </form>
 
         <div className="mt-8 text-center text-xs text-slate-400">
-          // TODO: çoklu müşteri hesabı sistemi ayrı bir aşamada eklenecek
+          
         </div>
       </div>
     </div>
