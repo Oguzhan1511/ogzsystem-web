@@ -14,8 +14,8 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        const adminUsername = process.env.ADMIN_USERNAME || "admin";
-        const adminPassword = process.env.ADMIN_PASSWORD || "ald2024";
+        const adminUsername = process.env.ADMIN_USERNAME || "ogzsystem";
+        const adminPassword = process.env.ADMIN_PASSWORD || "ogz2026";
 
         if (
           credentials.username === adminUsername &&
