@@ -58,7 +58,7 @@ export default async function TekliflerPage() {
                     </td>
                   </tr>
                 ) : (
-                  quotes.map((q) => (
+                  quotes.map((q: any) => (
                     <tr key={q.id} className="hover:bg-slate-50 transition-colors">
                       <td className="px-6 py-4 whitespace-nowrap text-slate-600">
                         {new Date(q.createdAt).toLocaleDateString("tr-TR")}
