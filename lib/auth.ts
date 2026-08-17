@@ -14,10 +14,12 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        // Simulating the same credentials as ALD Plastik admin
+        const adminUsername = process.env.ADMIN_USERNAME || "admin";
+        const adminPassword = process.env.ADMIN_PASSWORD || "ald2024";
+
         if (
-          credentials.username === "admin" &&
-          credentials.password === "ald12345"
+          credentials.username === adminUsername &&
+          credentials.password === adminPassword
         ) {
           return {
             id: "1",
