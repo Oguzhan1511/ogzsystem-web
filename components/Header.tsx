@@ -49,12 +49,12 @@ export function Header() {
           <Link href="/teklif-al" className="text-sm font-semibold text-slate-600 hover:text-ink transition-colors">
             Teklif Al
           </Link>
-          <a
-            href="https://ald.ogzsystem.com"
+          <Link
+            href="/admin/login"
             className="text-sm font-semibold text-accent hover:text-[#0a7a75] transition-colors"
           >
             Müşteri Girişi
-          </a>
+          </Link>
         </nav>
       </Container>
     </motion.header>
