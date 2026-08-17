@@ -30,7 +30,7 @@ export default function LoginPage() {
         setError("Geçersiz kullanıcı adı veya şifre.");
       } else {
         if (username !== "ogzsystem") {
-          window.location.href = "https://ald.ogzsystem.com/is-takibi";
+          window.location.href = "https://ald.ogzsystem.com/";
         } else {
           router.push("/admin/teklifler");
           router.refresh();
